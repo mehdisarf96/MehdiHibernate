@@ -18,6 +18,10 @@ public class Main {
         transaction.begin(); // Begin Transaction
 
         Person person = new Person(452L, "Mehdi", "Sarf");
+
+        entityManager.createQuery("from people");
+        entityManager.createNativeQuery("Select * from mycustomizedperson");
+
         entityManager.persist(person);
 
         transaction.commit(); // Commit Transaction

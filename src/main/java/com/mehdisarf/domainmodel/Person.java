@@ -2,8 +2,11 @@ package com.mehdisarf.domainmodel;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity
+@Table(name = "mycustomizedperson")
+@Entity(name = "people")
+// (class name: Person) ---- (entity name: people) ---- (table name: mycustomizedperson)
 public class Person {
 
     @Id
