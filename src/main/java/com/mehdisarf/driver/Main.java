@@ -17,7 +17,7 @@ public class Main {
 
         transaction.begin(); // Begin Transaction
 
-        Person person = new Person(452L, "Mehdi", "Sarf");
+        Person person = new Person("Mehdi", "Sarf");
 
         entityManager.createQuery("from people");
         entityManager.createNativeQuery("Select * from mycustomizedperson");

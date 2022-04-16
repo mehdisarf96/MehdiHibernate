@@ -1,8 +1,6 @@
 package com.mehdisarf.domainmodel;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "mycustomizedperson")
 @Entity(name = "people")
@@ -10,15 +8,25 @@ import javax.persistence.Table;
 public class Person {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id")
     private Long id;
+
+    @Column(name = "first_name", length = 50)
     private String firstName;
+
     private String lastName;
+
+    // unique in @Column is used only if you let your JPA provider create the database for you - it will create
+    // the unique constraint on the specified column.
+    // But if you already have the database, or you alter it once created, then unique doesn't have any effect.
+    @Column(unique = true, length = 250)
+    private String email;
 
     public Person() {
     }
 
-    public Person(Long id, String firstName, String lastName) {
-        this.id = id;
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
