@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,10 +19,8 @@ public class Main {
 
         transaction.begin(); // Begin Transaction
 
-        Person person = new Person("Mehdi", "Sarf");
-
-        entityManager.createQuery("from people");
-        entityManager.createNativeQuery("Select * from mycustomizedperson");
+        Person person = new Person("Mehdi", "Sarf","mehdi@gmail.com",new Date() ,
+                LocalDate.of(2022,03,26));
 
         entityManager.persist(person);
 

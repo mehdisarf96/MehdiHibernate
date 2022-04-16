@@ -1,6 +1,8 @@
 package com.mehdisarf.domainmodel;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Table(name = "mycustomizedperson")
 @Entity(name = "people")
@@ -17,11 +19,14 @@ public class Person {
 
     private String lastName;
 
-    // unique in @Column is used only if you let your JPA provider create the database for you - it will create
-    // the unique constraint on the specified column.
-    // But if you already have the database, or you alter it once created, then unique doesn't have any effect.
     @Column(unique = true, length = 250)
     private String email;
+
+    @Temporal(value = TemporalType.DATE) // before java 7
+    private Date birthDate; // before java 7
+
+    // there is no need to use @Temporal. LocalDate will automatically map to DATE (in DB).
+    private LocalDate bd;
 
     public Person() {
     }
@@ -29,6 +34,21 @@ public class Person {
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Person(String firstName, String lastName, String email, Date birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.birthDate = birthDate;
+    }
+
+    public Person(String firstName, String lastName, String email, Date birthDate, LocalDate bd) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.bd = bd;
     }
 
     public Long getId() {
