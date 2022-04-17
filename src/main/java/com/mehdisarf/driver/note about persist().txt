@@ -1,0 +1,112 @@
+persist() is used to save an entity into Database.
+persist() return void.
+
+vaqti ye entity ro persist() mikoni, az birun e Persistence Context (First Level Cache)
+be dakhele Persistence Context (First Level Cache) mibarish and
+it doesn't return anything.
+
+    public static void main(String[] args) {
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("mehdiPersistenceUnit");
+        EntityManager entityManager = emf.createEntityManager();
+
+        entityManager.getTransaction().begin(); // Begin Transaction
+
+        Person p1 = new Person("Mehdi", "Sarf");
+
+        entityManager.persist(p1);
+        System.out.println(p1);
+
+        entityManager.getTransaction().commit(); // Commit Transaction
+
+        entityManager.close();
+    }
+
+so dar hale hazer bade inke object persist shode, it is inside the Persistence Context (First Level Cache).
+
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+if we make an update to this object, it will automatically be pushed to Database.
+va dg niaz nist ke masalan oon object ro chemidunam update() ya merge() ya kari dg koni.
+khod be khod taqiri ke ijad kardi, e'emal mishe.
+
+	Person p1 = new Person("Mehdi", "Sarf");
+
+	entityManager.getTransaction().begin(); // Begin Transaction
+
+        entityManager.persist(p1);
+
+        p1.setFirstName("Meyti"); // inja make an update to object am.
+
+        entityManager.getTransaction().commit(); // Commit Transaction
+
+        entityManager.close();
+        emf.close();
+
+
+
+mibni ke bad az inke firstName ro vase p1 update kardam, hich operation ii anjam nadadam (op hayii mese update() ya merge()).
+
+
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+ama berim ba jozeiate bishtar, with more details bbinim:
+
+        Person p1 = new Person("Mehdi", "Sarf");
+
+        System.out.println("-----1------");
+        entityManager.persist(p1);
+        System.out.println(p1);
+        System.out.println("-----2------");
+        p1.setFirstName("Meyti"); // inja make an update to object am.
+        System.out.println("-----3------");
+        entityManager.getTransaction().commit(); // Commit Transaction
+        System.out.println("-----4------");
+        entityManager.close();
+        emf.close();
+        System.out.println("-----5------");
+
+
+
+output:
+
+-----1------
+Hibernate: insert into Person (firstName, lastName) values (?, ?)
+Person{id=1, firstName='Mehdi', lastName='Sarf'}
+-----2------
+-----3------
+Hibernate: update Person set firstName=?, lastName=? where id=?
+-----4------
+Apr 17, 2022 7:54:13 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PoolState stop
+INFO: HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/myhibernate?allowPublicKeyRetrieval=true&useSSL=False]
+-----5------
+
+beyne --1-- va --2--, dota output mibinim.
+mibinim ke vaqti ke 'entityManager.persist(p1)' , ye INSERT statement ijad karde.
+va 'Hibernate: insert into Person (firstName, lastName) values (?, ?)' bekhatere entityManager.persist(p1) bude.
+
+beyne --2-- va --3--, hich statement ii nemibinim.
+yani 'p1.setFirstName("Meyti")' baese hichi nemishe.
+
+beyne --3-- va --4--, yedune output mibinim.
+mibinim ke vaqti ke 'entityManager.getTransaction().commit()' , ye UPDATE statement ijad karde.
+va 'Hibernate: update Person set firstName=?, lastName=? where id=?' bekhatere entityManager.getTransaction().commit() bude.
+firstName e p1 ro update karde be "Meyti".
+
+**SO this is another feature of hibernate which is it will track of the changes of Managed/Persisted entities.
+keep track of Managed/Persisted entities.
+
+**If there is any change in the Managed/Persisted entities before it is commited (qabl az inke commit beshe),
+or before any query or before entitymanager is closed, it gonna issue an update into the Database.
+
+tu hamin mesal, before commit, yani beyne --3-- va --4--, we had an update on that Managed/Persisted entity (yani p1)
+and because of that, hibernate will issue an UPDATE statement to Database.
+
+==========================================================
+
+so persist(), object ro az Transient be Managed/Persisted state mibare
+va baes mishe ke object be darun va inside e Persistence Context (FLC) bere.
+and every changes you made on this entity, it eventually gonna be pushed into DB.

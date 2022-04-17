@@ -11,21 +11,23 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("mehdiPersistenceUnit");
         EntityManager entityManager = emf.createEntityManager();
 
-        EntityTransaction transaction = entityManager.getTransaction();
+        Person p1 = new Person("Mehdi", "Sarf");
 
-        transaction.begin(); // Begin Transaction
+        entityManager.getTransaction().begin(); // Begin Transaction
 
-        Person person = new Person("Mehdi", "Sarf","mehdi@gmail.com",new Date() ,
-                LocalDate.of(2022,03,26));
-
-        entityManager.persist(person);
-
-        transaction.commit(); // Commit Transaction
-
+        System.out.println("-----1------");
+        entityManager.persist(p1);
+        System.out.println(p1);
+        System.out.println("-----2------");
+        p1.setFirstName("Meyti");
+        System.out.println("-----3------");
+        entityManager.getTransaction().commit(); // Commit Transaction
+        System.out.println("-----4------");
         entityManager.close();
+        emf.close();
+        System.out.println("-----5------");
     }
 }

@@ -4,29 +4,15 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
-@Table(name = "mycustomizedperson")
-@Entity(name = "people")
-// (class name: Person) ---- (entity name: people) ---- (table name: mycustomizedperson)
+@Entity
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "person_id")
+    @GeneratedValue
     private Long id;
 
-    @Column(name = "first_name", length = 50)
     private String firstName;
-
     private String lastName;
-
-    @Column(unique = true, length = 250)
-    private String email;
-
-    @Temporal(value = TemporalType.DATE) // before java 7
-    private Date birthDate; // before java 7
-
-    // there is no need to use @Temporal. LocalDate will automatically map to DATE (in DB).
-    private LocalDate bd;
 
     public Person() {
     }
@@ -34,21 +20,6 @@ public class Person {
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Person(String firstName, String lastName, String email, Date birthDate) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.birthDate = birthDate;
-    }
-
-    public Person(String firstName, String lastName, String email, Date birthDate, LocalDate bd) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.birthDate = birthDate;
-        this.bd = bd;
     }
 
     public Long getId() {
@@ -73,5 +44,14 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
