@@ -20,6 +20,7 @@
 
             <!-- to not choose SEQUENCE for AUTO. because I'm using MySQL. -->
             <property name="hibernate.id.new_generator_mappings" value="false"/>
+            <!-- with this, it will choose IDENTITY instead. -->
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.cache.provider_class"
