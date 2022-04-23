@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Table(name = "mycustomizedperson")
-@Entity(name = "people")
+//@Entity(name = "people")
 // (class name: Person) ---- (entity name: people) ---- (table name: mycustomizedperson)
 public class PersonOldVersion { // esme qabli in class Person bud.
 

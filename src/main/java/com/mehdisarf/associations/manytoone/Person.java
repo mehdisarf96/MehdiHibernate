@@ -1,16 +1,13 @@
-package com.mehdisarf.domainmodel;
+package com.mehdisarf.associations.manytoone;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
 
-//@Entity
+@Entity
 public class Person {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
     private String lastName;
 
@@ -44,14 +41,5 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
     }
 }

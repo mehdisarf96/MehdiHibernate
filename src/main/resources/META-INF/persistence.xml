@@ -10,7 +10,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <properties>
-            <property name="packageToScan" value="com.mehdisarf.domainmodel"/>
+            <property name="packagesToScan" value="com.mehdisarf.associations"/>
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:mysql://localhost:3306/myhibernate?allowPublicKeyRetrieval=true&amp;useSSL=False"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
