@@ -1,10 +1,10 @@
-package com.mehdisarf.associations.manytoone;
+package com.mehdisarf.associations.manytoone.usingjoincolumn;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+//@Entity
 public class Address { // Many side.
 
     @Id

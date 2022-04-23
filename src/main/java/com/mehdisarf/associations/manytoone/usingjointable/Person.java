@@ -1,6 +1,9 @@
-package com.mehdisarf.associations.manytoone;
+package com.mehdisarf.associations.manytoone.usingjointable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Person {
