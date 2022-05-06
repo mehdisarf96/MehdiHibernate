@@ -2,7 +2,7 @@ package com.mehdisarf.associations.manytoone.usingjoincolumn;
 
 import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Person {
 
     @Id
@@ -41,5 +41,14 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

@@ -1,13 +1,12 @@
 package com.mehdisarf.associations.manytoone.usingjoincolumn;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Address { // Many side.
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String street;
     private String zipCode;
@@ -17,6 +16,12 @@ public class Address { // Many side.
     private Person person;
 
     public Address() {
+    }
+
+    public Address(String street, String zipCode, Person person) {
+        this.street = street;
+        this.zipCode = zipCode;
+        this.person = person;
     }
 
     public Long getId() {
@@ -49,5 +54,15 @@ public class Address { // Many side.
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", person=" + person +
+                '}';
     }
 }
