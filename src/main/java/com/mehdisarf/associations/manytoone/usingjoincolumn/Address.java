@@ -2,7 +2,7 @@ package com.mehdisarf.associations.manytoone.usingjoincolumn;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class Address { // Many side.
 
     @Id
