@@ -1,10 +1,10 @@
-package com.mehdisarf.associations.onetomany.usingjointable;
+package com.mehdisarf.associations.onetomany.usingjoincolumn;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Person {
 
     @Id
@@ -14,6 +14,7 @@ public class Person {
     private String lastName;
 
     @OneToMany
+    @JoinColumn
     private List<Address> addresses = new ArrayList<>();
 
     public Person() {
