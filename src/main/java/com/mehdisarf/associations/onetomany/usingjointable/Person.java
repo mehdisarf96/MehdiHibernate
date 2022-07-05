@@ -1,11 +1,9 @@
-package com.mehdisarf.associations.manytoone.usingjointable;
+package com.mehdisarf.associations.onetomany.usingjointable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
-//@Entity
+@Entity
 public class Person {
 
     @Id
@@ -13,6 +11,9 @@ public class Person {
     private Long id;
     private String firstName;
     private String lastName;
+
+    @OneToMany
+    private List<Address> addresses;
 
     public Person() {
     }
@@ -44,14 +45,5 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
     }
 }
