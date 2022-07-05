@@ -1,6 +1,7 @@
 package com.mehdisarf.associations.onetomany.usingjointable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,7 @@ public class Person {
     private String lastName;
 
     @OneToMany
-    private List<Address> addresses;
+    private List<Address> addresses = new ArrayList<>();
 
     public Person() {
     }
@@ -45,5 +46,13 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void addAddress(Address address) {
+        this.addresses.add(address);
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
     }
 }

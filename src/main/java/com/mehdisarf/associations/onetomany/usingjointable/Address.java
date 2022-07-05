@@ -1,13 +1,12 @@
 package com.mehdisarf.associations.onetomany.usingjointable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Address { // Many side.
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String street;
     private String zipCode;
@@ -22,6 +21,11 @@ public class Address { // Many side.
 
      */
     public Address() {
+    }
+
+    public Address(String street, String zipCode) {
+        this.street = street;
+        this.zipCode = zipCode;
     }
 
     public Long getId() {
@@ -46,5 +50,14 @@ public class Address { // Many side.
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
     }
 }
