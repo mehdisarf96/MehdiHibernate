@@ -1,4 +1,4 @@
-package com.mehdisarf.associations.manytooneandonetomany.onebidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.onebidirectional.usingjointable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,7 +20,9 @@ public class SecondInsertMain {
         address1.setPerson(person);
         address2.setPerson(person);
         // alan injur dg fayde dare va relationship tuye db barqarar mishe
-        // va maqadir e sotun e person_id dar table e 'address' null nakhahand mund.
+        // va be ezaye in relationship ha, tuye table e 'person_address'(ke nash'at gerefte az
+        // @ManyToOne va @JoinTable e class e Address hast) record e jadid
+        // zakhire va store mishe.
         // chon alan on Address side (owning side) umadi karet ro anjam dadi
         // va ertebat ro establish kardi.
 

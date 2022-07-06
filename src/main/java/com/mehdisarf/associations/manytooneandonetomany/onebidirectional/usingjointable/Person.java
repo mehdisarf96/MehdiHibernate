@@ -1,4 +1,4 @@
-package com.mehdisarf.associations.manytooneandonetomany.onebidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.onebidirectional.usingjointable;
 
 import javax.persistence.*;
 import java.util.ArrayList;

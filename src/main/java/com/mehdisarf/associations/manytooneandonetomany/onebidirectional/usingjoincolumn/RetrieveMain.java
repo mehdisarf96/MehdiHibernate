@@ -1,4 +1,4 @@
-package com.mehdisarf.associations.manytooneandonetomany.onebidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.onebidirectional.usingjoincolumn;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

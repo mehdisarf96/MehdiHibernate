@@ -1,8 +1,8 @@
-package com.mehdisarf.associations.manytooneandonetomany.onebidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.onebidirectional.usingjoincolumn;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class Address { // Many side.
 
     @Id
