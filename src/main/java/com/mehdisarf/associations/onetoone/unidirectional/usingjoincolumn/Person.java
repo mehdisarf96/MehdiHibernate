@@ -1,11 +1,9 @@
-package com.mehdisarf.associations.manytooneandonetomany.onebidirectional.usingjointable;
+package com.mehdisarf.associations.onetoone.unidirectional.usingjoincolumn;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-//@Entity
-public class Person {
+@Entity
+public class Person { // a person has only one address
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,8 +11,8 @@ public class Person {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "person")
-    private List<Address> addresses = new ArrayList<>();
+    @OneToOne
+    private Address address;
 
     public Person() {
     }
@@ -48,12 +46,12 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public void addAddress(Address address) {
-        this.addresses.add(address);
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
+    public Address getAddress() {
+        return address;
     }
 
     @Override
@@ -62,7 +60,6 @@ public class Person {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                "( " + addresses + " )" +
                 '}';
     }
 }
