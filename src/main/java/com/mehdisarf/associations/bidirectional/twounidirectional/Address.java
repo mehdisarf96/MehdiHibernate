@@ -1,11 +1,8 @@
-package com.mehdisarf.associations.onetomany.usingjoincolumn;
+package com.mehdisarf.associations.bidirectional.twounidirectional;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Address { // Many side.
 
     @Id
@@ -14,15 +11,9 @@ public class Address { // Many side.
     private String street;
     private String zipCode;
 
-    /* I'm demonstrating One-To-many Unidirectionl. so field paein ro hazf mikonim
-    chon this case is one to many and it is unidirectional;
-    which means a Person has collection of Address.
-    but from Address, it doesn't know the relationship about Person.
-
     @ManyToOne
     private Person person;
 
-     */
     public Address() {
     }
 
@@ -53,6 +44,14 @@ public class Address { // Many side.
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override

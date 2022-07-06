@@ -1,10 +1,10 @@
-package com.mehdisarf.associations.onetomany.usingjoincolumn;
+package com.mehdisarf.associations.bidirectional.twounidirectional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Person {
 
     @Id
@@ -14,7 +14,6 @@ public class Person {
     private String lastName;
 
     @OneToMany
-    @JoinColumn
     private List<Address> addresses = new ArrayList<>();
 
     public Person() {
@@ -55,5 +54,14 @@ public class Person {
 
     public List<Address> getAddresses() {
         return addresses;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
