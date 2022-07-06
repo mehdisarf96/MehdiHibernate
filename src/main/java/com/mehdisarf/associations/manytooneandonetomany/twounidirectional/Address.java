@@ -1,8 +1,8 @@
-package com.mehdisarf.associations.bidirectional.twounidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.twounidirectional;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class Address { // Many side.
 
     @Id
@@ -60,6 +60,7 @@ public class Address { // Many side.
                 "id=" + id +
                 ", street='" + street + '\'' +
                 ", zipCode='" + zipCode + '\'' +
+
                 '}';
     }
 }

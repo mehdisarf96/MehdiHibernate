@@ -1,4 +1,4 @@
-package com.mehdisarf.associations.bidirectional.twounidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.twounidirectional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -1,12 +1,11 @@
-package com.mehdisarf.associations.bidirectional.twounidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.twounidirectional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class RetrieveWhenSavedFromPersonSideMain {
-
+public class SecondRetrieveWhenSavedFromPersonSideMain {
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("mehdiPersistenceUnit");
 
     public static void main(String[] args) {
@@ -31,10 +30,9 @@ public class RetrieveWhenSavedFromPersonSideMain {
         // vase meqdardehi kardane association haye address, mire Join Column(fk) e table e address ro
         // negah mikone. (unjam ke maqadire oon column NULL hastan).
         // midunim ke be vaseteye save kardan on Person side, maqadire sotune FK e table e address, NULL e.
-        System.out.println(addressesOfThePerson.get(0).getPerson()); // null
-        addressesOfThePerson.get(0).getPerson().getFirstName(); // be dorosti NPE vasamun throw mishe.
-
-        System.out.println(addressesOfThePerson);
+        Address anAddress = entityManager.find(Address.class, 1L);
+        System.out.println(anAddress.getPerson()); // null
+        anAddress.getPerson().getFirstName(); // be dorosti NPE vasamun throw mishe.
 
         entityManager.getTransaction().commit();
         entityManager.close();

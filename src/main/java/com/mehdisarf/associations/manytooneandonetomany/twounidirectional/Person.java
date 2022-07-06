@@ -1,10 +1,10 @@
-package com.mehdisarf.associations.bidirectional.twounidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.twounidirectional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Person {
 
     @Id

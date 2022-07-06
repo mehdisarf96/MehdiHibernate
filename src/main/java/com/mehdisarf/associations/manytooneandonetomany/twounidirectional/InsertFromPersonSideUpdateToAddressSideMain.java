@@ -1,9 +1,8 @@
-package com.mehdisarf.associations.bidirectional.twounidirectional;
+package com.mehdisarf.associations.manytooneandonetomany.twounidirectional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class InsertFromPersonSideUpdateToAddressSideMain {
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("mehdiPersistenceUnit");
