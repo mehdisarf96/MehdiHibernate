@@ -1,8 +1,8 @@
-package com.mehdisarf.associations.onetoone.bidirectional.usingjoincolumn.onebidirectionalonetoone;
+package com.mehdisarf.associations.onetoone.unidirectional.sharedpk;
 
 import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Person { // a person has only one address
 
     @Id
@@ -12,6 +12,7 @@ public class Person { // a person has only one address
     private String lastName;
 
     @OneToOne
+    @PrimaryKeyJoinColumn
     private Address address;
 
     public Person() {

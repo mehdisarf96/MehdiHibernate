@@ -1,20 +1,24 @@
-package com.mehdisarf.associations.onetoone.bidirectional.usingjoincolumn.onebidirectionalonetoone;
+package com.mehdisarf.associations.onetoone.unidirectional.sharedpk;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-//@Entity
+@Entity
 public class Address { // Many side.
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @GeneratedValue(strategy = GenerationType.IDENTITY) // comment mikonam ta issue bartaraf she.
     private Long id;
     private String street;
     private String zipCode;
 
-    @OneToOne(mappedBy = "address")
-    private Person person;
-
     public Address() {
+    }
+
+    public Address(Long id, String street, String zipCode) {
+        this.id = id;
+        this.street = street;
+        this.zipCode = zipCode;
     }
 
     public Address(String street, String zipCode) {
@@ -44,14 +48,6 @@ public class Address { // Many side.
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     @Override
