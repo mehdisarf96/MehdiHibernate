@@ -1,8 +1,8 @@
-package com.mehdisarf.associations.onetoone.unidirectional.usingjoincolumn;
+package com.mehdisarf.associations.onetoone.bidirectional.usingjoincolumn.twounidirectionalonetoone;
 
 import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Address { // Many side.
 
     @Id
@@ -10,6 +10,9 @@ public class Address { // Many side.
     private Long id;
     private String street;
     private String zipCode;
+
+    @OneToOne
+    private Person person;
 
     public Address() {
     }
@@ -41,6 +44,14 @@ public class Address { // Many side.
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override
