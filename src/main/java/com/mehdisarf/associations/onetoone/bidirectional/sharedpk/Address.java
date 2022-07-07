@@ -1,16 +1,22 @@
-package com.mehdisarf.associations.onetoone.unidirectional.sharedpk;
+package com.mehdisarf.associations.onetoone.bidirectional.sharedpk;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
-//@Entity
+@Entity
 public class Address { // Many side.
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY) // comment mikonam ta issue bartaraf she.
+    // @GeneratedValue // comment mikonam ta issue bartaraf she.
     private Long id;
     private String street;
     private String zipCode;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Person person;
 
     public Address() {
     }
@@ -57,5 +63,13 @@ public class Address { // Many side.
                 ", street='" + street + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 '}';
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

@@ -1,8 +1,8 @@
-package com.mehdisarf.associations.onetoone.unidirectional.sharedpk;
+package com.mehdisarf.associations.onetoone.bidirectional.sharedpk;
 
 import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Person { // a person has only one address
 
     @Id
