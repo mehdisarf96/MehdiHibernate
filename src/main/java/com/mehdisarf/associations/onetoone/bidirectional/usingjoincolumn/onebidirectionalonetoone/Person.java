@@ -1,8 +1,8 @@
-package com.mehdisarf.associations.onetoone.bidirectional.usingjoincolumn.twounidirectionalonetoone;
+package com.mehdisarf.associations.onetoone.bidirectional.usingjoincolumn.onebidirectionalonetoone;
 
 import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Person { // a person has only one address
 
     @Id
