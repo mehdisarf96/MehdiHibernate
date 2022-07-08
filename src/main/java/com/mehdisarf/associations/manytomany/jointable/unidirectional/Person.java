@@ -1,9 +1,11 @@
-package com.mehdisarf.associations.onetoone.embeddable;
+package com.mehdisarf.associations.manytomany.jointable.unidirectional;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-//@Entity
-public class Person { // a person has only one address
+@Entity
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,10 +13,8 @@ public class Person { // a person has only one address
     private String firstName;
     private String lastName;
 
-    @Embedded
-    // it means embeddable entity (address)
-    // is gonna be embedded here.
-    private Address address;
+    @ManyToMany
+    private List<Car> cars = new ArrayList<>();
 
     public Person() {
     }
@@ -48,12 +48,13 @@ public class Person { // a person has only one address
         this.lastName = lastName;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public Address getAddress() {
-        return address;
+    // a convenient method
+    public void addCar(Car car) {
+        this.cars.add(car);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class Person { // a person has only one address
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                "(" + address + ")" +
-                '}';
+                ", cars=" + cars +
+                "}";
     }
 }
