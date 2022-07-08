@@ -1,8 +1,8 @@
-package com.mehdisarf.associations.onetoone.bidirectional.sharedpk;
+package com.mehdisarf.associations.onetoone.embeddable;
 
 import javax.persistence.*;
 
-//@Entity
+@Entity
 public class Person { // a person has only one address
 
     @Id
@@ -11,8 +11,9 @@ public class Person { // a person has only one address
     private String firstName;
     private String lastName;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+    @Embedded
+    // it means embeddable entity (address)
+    // is gonna be embedded here.
     private Address address;
 
     public Person() {
@@ -61,6 +62,7 @@ public class Person { // a person has only one address
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                "(" + address + ")" +
                 '}';
     }
 }
