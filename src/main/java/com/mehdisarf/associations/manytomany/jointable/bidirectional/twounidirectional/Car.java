@@ -1,18 +1,20 @@
-package com.mehdisarf.associations.manytomany.jointable.unidirectional;
+package com.mehdisarf.associations.manytomany.jointable.bidirectional.twounidirectional;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-//@Entity
-public class Car { // car doesn't know anything about person.
+@Entity
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String model;
     private String color;
+
+    @ManyToMany
+    private List<Person> persons = new ArrayList<>();
 
     public Car() {
     }
@@ -42,12 +44,22 @@ public class Car { // car doesn't know anything about person.
         this.color = color;
     }
 
+    // a convenient method
+    public void addOwner(Person person) {
+        this.persons.add(person);
+    }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
     @Override
     public String toString() {
-        return "(Car" +
+        return "Car{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
-                ")";
+                ", persons=(" + persons + ")" +
+                '}';
     }
 }
