@@ -1,10 +1,10 @@
-package com.mehdisarf.associations.manytomany.jointable.bidirectional.twounidirectional;
+package com.mehdisarf.associations.manytomany.jointable.bidirectional.onebidirectional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Car {
 
     @Id
@@ -13,7 +13,7 @@ public class Car {
     private String model;
     private String color;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "cars")
     private List<Person> persons = new ArrayList<>();
 
     public Car() {
@@ -49,17 +49,13 @@ public class Car {
         this.persons.add(person);
     }
 
-    public List<Person> getPersons() {
-        return persons;
-    }
-
     @Override
     public String toString() {
-        return "Car{" +
+        return "(Car" +
                 "id=" + id +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
-                ", persons=(" + persons + ")" +
-                '}';
+                ", persons='" + persons + '\'' +
+                ")";
     }
 }

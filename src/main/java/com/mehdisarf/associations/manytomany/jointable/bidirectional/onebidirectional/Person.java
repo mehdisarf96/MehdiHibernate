@@ -1,10 +1,10 @@
-package com.mehdisarf.associations.manytomany.jointable.bidirectional.twounidirectional;
+package com.mehdisarf.associations.manytomany.jointable.bidirectional.onebidirectional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Person {
 
     @Id
@@ -63,7 +63,6 @@ public class Person {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", cars=" + cars +
                 "}";
     }
 }
