@@ -1,10 +1,9 @@
-package com.mehdisarf.inheritance.singletable.customizeddiscriminator;
+package com.mehdisarf.inheritance.jointable;
 
 import javax.persistence.*;
 
-//@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "account_type", discriminatorType = DiscriminatorType.INTEGER)
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Account {
 
     @Id

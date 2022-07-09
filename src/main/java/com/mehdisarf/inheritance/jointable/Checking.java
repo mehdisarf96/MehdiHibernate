@@ -1,11 +1,9 @@
-package com.mehdisarf.inheritance.singletable.customizeddiscriminator;
+package com.mehdisarf.inheritance.jointable;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-//@Entity
-@DiscriminatorValue("1")
+@Entity
 public class Checking extends Account {
 
     @Column(name = "[limit]") // chon limit ye keyword e tu MySQL.
