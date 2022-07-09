@@ -1,0 +1,23 @@
+checking(subtype) table:
+==============================
+   id     balance     limit
+------------------------------
+    1       500       10
+    2       1500      40
+    3       550       20
+==============================
+
+savings(subtype) table:
+==============================
+   id     balance     interest
+------------------------------
+   1      9000          800
+   2      9000          800
+==============================
+
+va mizadi:
+Account loaded = entitymanager.find( Account.class, 1 );
+
+AMBIGUITY E MAHZ!
+alan nemidune manzuret checking instance ba id e 1 va balance e 500 va limit e 10 e
+ya manzuret savings instance ba id e 1 va balance e 9000 va interest e 800 e.

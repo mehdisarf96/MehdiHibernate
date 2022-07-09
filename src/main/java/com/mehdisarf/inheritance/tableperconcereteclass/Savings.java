@@ -1,8 +1,8 @@
-package com.mehdisarf.inheritance.jointable;
+package com.mehdisarf.inheritance.tableperconcereteclass;
 
 import javax.persistence.Entity;
 
-//@Entity
+@Entity
 public class Savings extends Account {
 
     private double interest;

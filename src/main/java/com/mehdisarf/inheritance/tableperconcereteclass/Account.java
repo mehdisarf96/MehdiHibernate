@@ -1,15 +1,14 @@
-package com.mehdisarf.inheritance.jointable;
+package com.mehdisarf.inheritance.tableperconcereteclass;
 
 import javax.persistence.*;
 
-//@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
-
     private double balance;
 
     public Account() {

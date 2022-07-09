@@ -1,9 +1,9 @@
-package com.mehdisarf.inheritance.jointable;
+package com.mehdisarf.inheritance.tableperconcereteclass;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-//@Entity
+@Entity
 public class Checking extends Account {
 
     @Column(name = "[limit]") // chon limit ye keyword e tu MySQL.
