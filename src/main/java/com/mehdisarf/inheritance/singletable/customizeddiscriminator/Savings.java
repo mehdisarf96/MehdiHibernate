@@ -1,8 +1,10 @@
-package com.mehdisarf.inheritance.singletable;
+package com.mehdisarf.inheritance.singletable.customizeddiscriminator;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-//@Entity
+@Entity
+@DiscriminatorValue("2")
 public class Savings extends Account {
 
     private double interest;
